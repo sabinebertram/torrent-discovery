@@ -31,6 +31,7 @@ class Discovery extends EventEmitter {
     this._dhtTimeout = false
     this._internalDHT = false // is the DHT created internally?
     this._license = opts.license
+    this._requestId = opts.requestId
 
     this._onWarning = err => {
       this.emit('warning', err)
@@ -149,7 +150,8 @@ class Discovery extends EventEmitter {
       peerId: this.peerId,
       port: this._port,
       userAgent: this._userAgent,
-      license: this._license
+      license: this._license,
+      requestId: this._requestId
     })
 
     const tracker = new Tracker(opts)
